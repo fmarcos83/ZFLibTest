@@ -56,6 +56,14 @@ class DomainObjectTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1,$entry->id);
     }
 
+    public function testSetsIdEqualsExpectedValueIfInitialValueIsEmptyString()
+    {
+        $data = array('id'=>'');
+        $entry = new DomainObject($data);
+        $entry->id = 1;
+        $this->assertEquals(1,$entry->id);
+    }
+
     public function testToArrayIsExpectedDataIfNotModified()
     {
         $data=array('name'=>'Francisco', 'surname'=>'Marcos');
@@ -117,5 +125,7 @@ class DomainObjectTest extends PHPUnit_Framework_TestCase
         $entry = new DomainObject($data);
         $this->assertEquals(false, isset($entry->age));
     }
+
+    //TODO check uppercase lowercase properties
 
 }

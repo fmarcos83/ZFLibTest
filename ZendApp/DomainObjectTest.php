@@ -30,6 +30,32 @@ class DomainObjectTest extends PHPUnit_Framework_TestCase
         $entry->id = 2;
     }
 
+    public function testSetsIdEqualsExpectedValueIfInitialValueIsNull()
+    {
+        $data = array('id'=>null);
+        $entry = new DomainObject($data);
+        $entry->id = 1;
+        $this->assertEquals(1,$entry->id);
+    }
+
+    //TODO: is this really necessary
+    public function testSetsIdEqualsExpectedValueIfInitialValueIs0()
+    {
+        $data = array('id'=>0);
+        $entry = new DomainObject($data);
+        $entry->id = 1;
+        $this->assertEquals(1,$entry->id);
+    }
+
+    //TODO: is this really necessary
+    public function testSetsIdEqualsExpectedValueIfInitialValueIsFalse()
+    {
+        $data = array('id'=>false);
+        $entry = new DomainObject($data);
+        $entry->id = 1;
+        $this->assertEquals(1,$entry->id);
+    }
+
     public function testToArrayIsExpectedDataIfNotModified()
     {
         $data=array('name'=>'Francisco', 'surname'=>'Marcos');

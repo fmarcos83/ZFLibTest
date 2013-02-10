@@ -12,7 +12,7 @@ class DomainObjectTest extends PHPUnit_Framework_TestCase
     /**
      *
      * @expectedException ZendApp\Data\Exception\DomainObject
-     * @expectedExceptionMessage $_data cannot be an empty array
+     * @expectedExceptionMessage $data cannot be an empty array
      */
     public function testThrowsExceptionIfDataIsEmpty()
     {

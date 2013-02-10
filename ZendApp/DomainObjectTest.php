@@ -126,6 +126,34 @@ class DomainObjectTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(false, isset($entry->age));
     }
 
-    //TODO check uppercase lowercase properties
+    public function testSetModifiesLowerCaseProperty()
+    {
+        $data = array('name'=>'Francisco');
+        $entry = new DomainObject($data);
+        $entry->Name = 'Perico';
+        $this->assertEquals('Perico', $entry->Name);
+    }
+
+    public function testGetChecksForLowerCaseProperty()
+    {
+        $data = array('name'=>'Francisco');
+        $entry = new DomainObject($data);
+        $this->assertEquals('Francisco', $entry->NaME);
+    }
+
+    public function testSettingDataUpperLowerCasePropertyOnGet()
+    {
+        $data = array('NamE'=>'Francisco');
+        $entry = new DomainObject($data);
+        $this->assertEquals('Francisco', $entry->name);
+    }
+
+    public function testSettingDataUpperLowerCasePropertyOnSet()
+    {
+        $data = array('NaMe'=>'Francisco');
+        $entry = new DomainObject($data);
+        $entry->name = 'Perico';
+        $this->assertEquals('Perico', $entry->Name);
+    }
 
 }

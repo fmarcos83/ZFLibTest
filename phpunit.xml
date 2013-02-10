@@ -1,0 +1,9 @@
+<phpunit
+    bootstrap="bootstrap.php"
+    >
+    <testsuites>
+        <testsuite name="ZendApp">
+            <directory>ZendApp</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

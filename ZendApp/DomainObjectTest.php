@@ -56,6 +56,7 @@ class DomainObjectTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1,$entry->id);
     }
 
+    //TODO: is this really necessary
     public function testSetsIdEqualsExpectedValueIfInitialValueIsEmptyString()
     {
         $data = array('id'=>'');
@@ -155,5 +156,8 @@ class DomainObjectTest extends PHPUnit_Framework_TestCase
         $entry->name = 'Perico';
         $this->assertEquals('Perico', $entry->Name);
     }
+
+    //TODO: it's necesary to check id data on instantation merges
+    //the data array if already has properties
 
 }

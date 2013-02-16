@@ -157,7 +157,57 @@ class DomainObjectTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Perico', $entry->Name);
     }
 
+    public function testSetDataAddsDataToDomainObject()
+    {
+        $data = array('name'=>'Francisco','surname'=>'Marcos','id'=>'1');
+        $keys = array('name'=>'', 'surname'=>'', 'id'=>'');
+        $entry = new DomainObject($keys);
+        $entry->setData($data);
+        $this->assertEquals($entry->toArray(), $data);
+    }
+
+    /**
+     * @expectedException \ZendApp\Data\Exception\DomainObject
+     * @expectedExceptionMessage $data must be a dictionary with alpha key values
+     */
+    public function testThrowsExceptionIfKeysDontSatisfyCtypeAlpha()
+    {
+        $keys = array('name','surname','id');
+        $entry = new DomainObject($keys);
+    }
     //TODO: it's necesary to check id data on instantation merges
     //the data array if already has properties
+    public function testSetDataIfDataNotEmptyOnInstantiation()
+    {
+        $keys = array('name'=>'Francisco','surname'=>'Marcos');
+        $data = array('name'=>'Test', 'surname'=>'Another test');
+        $entry = new DomainObject($keys);
+        $entry->setData($data);
+        $this->assertEquals($entry->toArray(), $data);
+    }
+
+    /**
+     * @expectedException ZendApp\Data\Exception\DomainObject
+     * @expectedExceptionMessage id is inmutable in this DomainObject
+     */
+    public function testSetDataThrowsIdExceptionIfIdAlreadyHasValue()
+    {
+        $keys = array('name'=>'Francisco', 'surname'=>'Marcos', 'id'=>1);
+        $data = array('naMe'=>'Pepe', 'surname' => 'García', 'id'=>2);
+        $entry = new DomainObject($keys);
+        $entry->setData($data);
+    }
+
+    /**
+     * @expectedException ZendApp\Data\Exception\DomainObject
+     * @expectedExceptionMessage tel is not present in this domain object
+     */
+    public function testSetDataThrowsExceptionIfPropertyNotPresentOnInstantation()
+    {
+        $keys = array('name'=>'Francisco', 'surname'=>'Marcos', 'id'=>1);
+        $data = array('tel'=>'668864332', 'surname' => 'García', 'id'=>2);
+        $entry = new DomainObject($keys);
+        $entry->setData($data);
+    }
 
 }

@@ -1,6 +1,7 @@
 <?php
+use ZendApp\Test\PHPUnit\TestCase as ZendAppTestCase;
 use ZendApp\Data\DomainObject as DomainObject;
-class DomainObjectTest extends PHPUnit_Framework_TestCase
+class DomainObjectTest extends ZendAppTestCase
 {
     public function testSetsAllowedDomainObjectProperty()
     {

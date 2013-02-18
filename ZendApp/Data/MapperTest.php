@@ -73,7 +73,7 @@ class MapperTest extends ZendAppTestCase
 
     /**
      * @expectedException \ZendApp\Data\Exception\Mapper
-     * @expectedExceptionMessage DomainObjectClassName is required
+     * @expectedExceptionMessage domainObjectClassName is required
      */
     public function testThrowsMapperExceptionIfDomainObjectIsNotSet()
     {
@@ -86,7 +86,7 @@ class MapperTest extends ZendAppTestCase
 
     /**
      * @expectedException \ZendApp\Data\Exception\Mapper
-     * @expectedExceptionMessage DomainObjectClassName is required
+     * @expectedExceptionMessage domainObjectClassName is required
      */
     public function testThrowsMapperExceptionIfDomainObjectIsEmpty()
     {
